@@ -1,1 +1,11 @@
-<p>products works!</p>
+<h2>Product Component</h2>
+<!-- <code>
+    <pre>{{ products | json }}</pre>
+</code> -->
+
+<ul>
+    <li *ngFor="let item of products" >
+        {{ item.name }} - {{ item.price | currency }}
+    </li>
+</ul>
+
