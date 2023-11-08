@@ -1,5 +1,12 @@
 export interface Product {
-    id: string,
-    name: string,
-    price: number
+    category: string;
+    createdAt: string;
+    name : string;
+    price: number;
+    quantity: number;
+    updatedAt: string;
+    urlImage: string;
+    userId: string;
+    __v: number;
+    _id: string
 }
