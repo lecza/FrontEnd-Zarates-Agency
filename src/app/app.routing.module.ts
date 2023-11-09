@@ -7,6 +7,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import( './auth/auth.module' ).then( module => module.AuthModule )
   },
+  /** Ruta a los componentes del Modulo Dashboard */
+  {
+    path: 'dashboard',
+    loadChildren: () => import( './dashboard/dashboard.module' ).then( module => module.DashboardModule )
+  },
   /** Ruta para la redireccion de rutas desconocidas */
   {
     path: '**',
