@@ -1,1 +1,51 @@
-<p>register works!</p>
+<form
+  class="form form-auth form-login"
+  autocomplete="off"
+>
+  <h2>Registro</h2>
+  <div class="field">
+    <label for="nombre">Nombre</label>
+    <input
+      id="nombre"
+      class="input-field"
+      type="text"
+      formControlName="name"
+      placeholder="Ingrese su Nombre"
+    />
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      class="input-field"
+      type="email"
+      formControlName="email"
+      placeholder="Ingrese su Email"
+    />
+  </div>
+  <div class="field">
+    <label for="password">Password</label>
+    <input
+      id="password"
+      class="input-field"
+      type="password"
+      formControlName="password"
+      placeholder="Ingrese su Password"
+    />
+  </div>
+  <div class="field">
+    <button
+      class="btn btn-primary"
+      type="submit"
+    >Registrarse</button>
+  </div>
+  <div class="field footer-form">
+    <p>¿Ya tienes cuenta?</p>
+    <p>Ingresa <a routerLink="/auth/login">aquí</a></p>
+  </div>
+
+  <div class="errors">
+    <h3 class="title-errors">Errors</h3>
+    <pre class="error">Error 1</pre>
+  </div>
+</form>
