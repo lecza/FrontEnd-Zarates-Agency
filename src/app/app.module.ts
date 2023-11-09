@@ -6,11 +6,17 @@ import { AppRoutingModule } from './app.routing.module';
 
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { HeaderComponent } from './components/partials/header/header.component';
+import { FooterComponent } from './components/partials/footer/footer.component';
+import { AsideComponent } from './components/partials/aside/aside.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent
+    ProductsComponent,
+    HeaderComponent,
+    FooterComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
