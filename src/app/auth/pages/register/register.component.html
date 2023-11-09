@@ -1,12 +1,16 @@
+<!-- Paso 3 (Reactive Forms): Vincular los campos agrupados al formulario usando la directiva -> [formGroup]="registerForm" -->
+<!-- Paso 4 (Reactive Forms): Obtener datos del formulario invocando el metodo onSumbit a traves del evento -> (ngSubmit)="onSubmit()" -->
 <form
+  [formGroup]="registerForm"
+  (ngSubmit)="onSubmit()"
   class="form form-auth form-login"
   autocomplete="off"
 >
   <h2>Registro</h2>
   <div class="field">
-    <label for="nombre">Nombre</label>
+    <label for="name">Nombre</label>
     <input
-      id="nombre"
+      id="name"
       class="input-field"
       type="text"
       formControlName="name"
@@ -19,7 +23,7 @@
       id="email"
       class="input-field"
       type="email"
-      formControlName="email"
+      formControlName="username"
       placeholder="Ingrese su Email"
     />
   </div>
