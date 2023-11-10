@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  message!: String;
+  classMessage!: String;
+
   // Paso 2 (Reactive Forms): Define estructura
   registerForm: FormGroup = this.formBuilder.group({
     name: [ 
@@ -47,7 +50,23 @@ export class RegisterComponent {
 
     // Invocar el Servicio
     this.authService.register( this.registerForm.value ).subscribe( data => {
-      console.log( data );
+      console.log( '>>>', data );
+
+
+      // Valida si la peticion fue exitosa y despliega 
+      if( data.ok )
+        this.classMessage = 'message success';
+      else
+        this.classMessage = 'message error'
+
+      // Oculta mensaje del formulario
+      setTimeout( () => {
+        this.classMessage = '';
+        this.message = '';
+      }, 1000 );
+
+      // Asigna el mensaje
+      this.message = data.msg;
     });
 
     this.registerForm.reset();

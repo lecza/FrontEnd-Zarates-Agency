@@ -57,3 +57,21 @@ button.btn {
   margin: 0 auto;
   padding: 0.4rem;
 }
+
+.message {
+  padding: 1rem;
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+
+.error {
+  border: 1px solid red;
+  color: red;
+  background-color: pink;
+}
+
+.success {
+  border: 1px solid green;
+  color: green;
+  background-color: limegreen;
+}
