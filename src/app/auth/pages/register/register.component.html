@@ -16,6 +16,23 @@
       formControlName="name"
       placeholder="Ingrese su Nombre"
     />
+    <!-- Despliega los mensajes de error del campo -->
+    <div 
+      *ngIf="registerForm.get( 'name' )?.invalid && registerForm.get( 'name' )?.dirty && registerForm.get( 'name' )?.touched" 
+      class="error-message"
+    >
+      <small 
+        *ngIf="registerForm.get( 'name' )?.errors?.[ 'required' ]"
+      >
+        El nombre del usuario es requerido
+      </small>
+      <small
+        *ngIf="registerForm.get( 'name' )?.errors?.[ 'minLength' ]"
+      >
+        Debe tener al menos 3 caracteres
+      </small>
+
+    </div>
   </div>
   <div class="field">
     <label for="email">Email</label>
@@ -26,6 +43,21 @@
       formControlName="username"
       placeholder="Ingrese su Email"
     />
+      <!-- Despliega los mensajes de error del campo -->
+      <div 
+        *ngIf="registerForm.get( 'username' )?.invalid && registerForm.get( 'username' )?.dirty && registerForm.get( 'username' )?.touched" 
+        class="error-message"
+      >
+        <small
+          *ngIf="registerForm.get( 'username' )?.errors?.[ 'required' ]"
+        >
+          El username es requerido
+        </small>
+        <small *ngIf="registerForm.get( 'username' )?.errors?.[ 'email' ]">
+          El username debe ser un correo electronico
+        </small>
+      </div>
+
   </div>
   <div class="field">
     <label for="password">Password</label>
@@ -36,11 +68,35 @@
       formControlName="password"
       placeholder="Ingrese su Password"
     />
+      <!-- Despliega los mensajes de error del campo -->
+      <div 
+        *ngIf="registerForm.get( 'password' )?.invalid && registerForm.get( 'password' )?.dirty && registerForm.get( 'password' )?.touched" 
+        class="error-message"
+      >
+        <small
+          *ngIf="registerForm.get( 'password' )?.errors?.[ 'required' ]"
+        >
+          Contrasenia requerida
+        </small>
+        <small
+          *ngIf="registerForm.get( 'password' )?.errors?.[ 'minLength' ]"
+        >
+          Debe tener minimo 6 caracteres
+        </small>
+        <small
+          *ngIf="registerForm.get( 'password' )?.errors?.[ 'maxLength' ]"
+        >
+          Debe tener maximo 12 caracteres
+        </small>
+
+      </div>
+
   </div>
   <div class="field">
     <button
       class="btn btn-primary"
       type="submit"
+      [disabled]="registerForm.invalid"
     >Registrarse</button>
   </div>
   <div class="field footer-form">
@@ -50,6 +106,8 @@
 
   <div class="errors">
     <h3 class="title-errors">Errors</h3>
-    <pre class="error">Error 1</pre>
+    <pre class="error">name {{ registerForm.get( 'name' )?.errors | json }}</pre>
+    <pre class="error">username {{ registerForm.get( 'username' )?.errors | json }}</pre>
+    <pre class="error">password {{ registerForm.get( 'password' )?.errors | json }}</pre>
   </div>
 </form>
