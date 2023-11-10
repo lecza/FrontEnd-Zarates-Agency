@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -34,10 +36,20 @@ export class RegisterComponent {
   });
 
   // Paso 1 (Reactive Forms): Inyeccion de dependencias
-  constructor( private formBuilder: FormBuilder ) {}
+  constructor( 
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 
   // Paso 4 (Reactive Forms): Obtener datos del formulario
   onSubmit() {
-    console.log( this.registerForm.value );
+    console.log( this.registerForm.value );   // { name: 'dasdasda', username: 'gc@test.com', password: '123456'}
+
+    // Invocar el Servicio
+    this.authService.register( this.registerForm.value ).subscribe( data => {
+      console.log( data );
+    });
+
+    this.registerForm.reset();
   }
 }
