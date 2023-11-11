@@ -63,7 +63,7 @@ export class RegisterComponent {
       setTimeout( () => {
         this.classMessage = '';
         this.message = '';
-      }, 1000 );
+      }, 2000 );
 
       // Asigna el mensaje
       this.message = data.msg;
