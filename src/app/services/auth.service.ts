@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { User } from '../interfaces/user';
@@ -13,11 +13,11 @@ import { Router } from '@angular/router';
 export class AuthService {
   BASE_URL: string = environment.baseUrl;
 
-  constructor( 
-    private http: HttpClient, 
+  constructor(
+    private http: HttpClient,
     private router: Router
   ) { }
-  
+
   register( newUser: User ) {
     const URL = `${ this.BASE_URL }/auth/register`;
     // console.log( newUser );         // { name: 'dasdasda', username: 'gc@test.com', password: '123456'}
@@ -38,7 +38,7 @@ export class AuthService {
       .pipe(
         tap( ( response: ResponseAuth ) => {
           localStorage.setItem( 'token', response.token! );
-          
+
           // this.router.navigateByUrl( '/dashboard' );
           this.router.navigate( [ 'dashboard' ] );
         }),
@@ -47,6 +47,14 @@ export class AuthService {
           return of( false );
         })
       );
+  }
+
+  verifyToken() {
+    const token = localStorage.getItem( 'token' ) || '';
+    const URL = `${ this.BASE_URL }/auth/renew-token`;
+    const headers = new HttpHeaders().set( 'X-Token', token );
+
+    return this.http.get( URL, { headers } );
   }
 
 }
