@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { MainComponent } from './pages/main/main.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { verifyAuthGuard } from '../guards/verify-auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +13,8 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'products', component: ProductsComponent }
-    ]
+    ],
+    canActivate: [ verifyAuthGuard ]
   }
 ];
 
