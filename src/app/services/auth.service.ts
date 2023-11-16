@@ -12,11 +12,18 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   BASE_URL: string = environment.baseUrl;
+  private authData!: User;
 
   constructor(
     private http: HttpClient,
     private router: Router
   ) { }
+
+  /** Getter */
+  get user() {
+    // Evita modificaciones sobre el atributo de la clase "Inmutable"
+    return { ...this.authData };
+  }
 
   register( newUser: User ) {
     const URL = `${ this.BASE_URL }/auth/register`;
@@ -54,7 +61,18 @@ export class AuthService {
     const URL = `${ this.BASE_URL }/auth/renew-token`;
     const headers = new HttpHeaders().set( 'X-Token', token );
 
-    return this.http.get( URL, { headers } );
+    return this.http.get<ResponseAuth>( URL, { headers } )
+      .pipe(
+        tap( data => {
+          console.log( data );  //
+
+          this.authData = data.userData!;   // 
+        }),
+        map( data => data.ok ),
+        catchError( error => {
+           return of( false );
+        })
+      );
   }
 
 }
