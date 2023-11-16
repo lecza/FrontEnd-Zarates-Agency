@@ -66,7 +66,7 @@ export class RegisterComponent {
       }, 2000 );
 
       // Asigna el mensaje
-      this.message = data.msg;
+      this.message = data.msg!;
     });
 
     this.registerForm.reset();

@@ -1,6 +1,6 @@
 export interface ResponseAuth {
     ok: boolean;
-    msg: string;
+    msg?: string;
     token?: string;
 }
 
