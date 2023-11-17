@@ -72,6 +72,9 @@ export class AuthService {
             this.authData = data.userData!;                 // Objeto con el payload (informacion del usuario) para filtrar (role) y mostrar datos (name, username) en los componentes (header)
             localStorage.setItem( 'token', data.token! );   // Actualiza Token guardado en el localStorage
           }
+          else {
+            localStorage.removeItem( 'token' );
+          }
 
         }),
         map( data => data.ok ),
