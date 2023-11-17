@@ -1,4 +1,5 @@
 import { inject } from '@angular/core';
+
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { tap } from 'rxjs';
@@ -11,6 +12,7 @@ export const verifyAuthGuard: CanActivateFn = ( route, state ) => {
 
 
   /** El Guard siempre devuelve un valor Booleano */
+
    // true / false
   return authService.verifyToken()
     .pipe(
@@ -23,5 +25,4 @@ export const verifyAuthGuard: CanActivateFn = ( route, state ) => {
         }
       })
     );
-  return ( localStorage.getItem( 'token' ) != null ) ? true : false;
 };

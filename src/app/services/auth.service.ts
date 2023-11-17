@@ -18,12 +18,13 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) { }
-
+  
   /** Getter */
   get user() {
     // Evita modificaciones sobre el atributo de la clase "Inmutable"
     return { ...this.authData };
   }
+
 
   register( newUser: User ) {
     const URL = `${ this.BASE_URL }/auth/register`;
@@ -64,9 +65,9 @@ export class AuthService {
     return this.http.get<ResponseAuth>( URL, { headers } )
       .pipe(
         tap( data => {
-          console.log( data );  //
+          console.log( data );              
 
-          this.authData = data.userData!;   // 
+          this.authData = data.userData!;   // Objeto con el payload (informacion del usuario) para filtrar (role) y mostrar datos (name, username) en los componentes (header)
         }),
         map( data => data.ok ),
         catchError( error => {
