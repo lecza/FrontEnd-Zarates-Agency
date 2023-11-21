@@ -12,6 +12,9 @@ export class RegisterComponent {
   message!: String;
   classMessage!: String;
 
+  public pass: RegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+  public email: RegExp = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+
   // Paso 2 (Reactive Forms): Define estructura
   registerForm: FormGroup = this.formBuilder.group({
     name: [ 
@@ -25,7 +28,7 @@ export class RegisterComponent {
       '',
       [
         Validators.required,
-        Validators.email
+        Validators.pattern( this.email )
       ]
     ],
     password: [ 
@@ -33,7 +36,8 @@ export class RegisterComponent {
       [ 
         Validators.required,
         Validators.minLength( 6 ),
-        Validators.maxLength( 12 )
+        Validators.maxLength( 12 ),
+        Validators.pattern( this.pass )
       ]
     ]
   });
