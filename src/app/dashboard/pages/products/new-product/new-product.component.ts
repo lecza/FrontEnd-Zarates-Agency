@@ -1,40 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-// Función de validación personalizada para el campo 'price'
-function validatePrice( control: AbstractControl ) {
-  const value = control.value;
-
-  if ( value < 0 ) {
-
-    return { negativeValue: true };
-  }
-
-  return null;
-}
-
-
-// Función de validación personalizada para el campo 'quantity'
-function validateQuantity( control: AbstractControl ) {
-  const value = control.value;
-
-  if ( value <= 0 ) {
-    return { invalidQuantity: true };
-  }
-
-  return null;
-}
-
-// Función de validación personalizada para el campo 'description'
-function validateDescription( control: AbstractControl ): { [key: string]: boolean } | null {
-  const value = control.value;
-
-  if ( value && (value.length < 3 || value.length > 140 ) ) {
-    return { invalidDescriptionLength: true };
-  }
-
-  return null;
-}
+import { ValidateFormsService } from 'src/app/services/validate-forms.service';
 
 @Component({
   selector: 'app-new-product',
@@ -45,14 +11,17 @@ export class NewProductComponent {
   categories=[ 'Tecnologia', 'Hogar', 'Frutas' ];
   productForm: FormGroup = this.formBuilder.group({
     name: [ '', [ Validators.required, Validators.minLength( 3 ) ] ],
-    quantity: [ '', [ Validators.required, validateQuantity ] ],
-    price: [ '', [ validatePrice ] ],
-    description: [ '', [ validateDescription ] ],
+    quantity: [ '', [ Validators.required, this.validateForms.validateQuantity ] ],
+    price: [ '', [ this.validateForms.validatePrice ] ],
+    description: [ '', [ this.validateForms.validateDescription ] ],
     category: [ '' ],
     urlImage: [ '' ]
   });
 
-  constructor( private formBuilder: FormBuilder ) {}
+  constructor( 
+    private formBuilder: FormBuilder,
+    private validateForms: ValidateFormsService
+  ) {}
 
   onSubmit() {
     console.log( this.productForm.value );
