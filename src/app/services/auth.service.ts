@@ -18,7 +18,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) { }
-  
+
   /** Getter */
   get user() {
     // Evita modificaciones sobre el atributo de la clase "Inmutable"
@@ -65,9 +65,17 @@ export class AuthService {
     return this.http.get<ResponseAuth>( URL, { headers } )
       .pipe(
         tap( data => {
-          console.log( data );              
+          console.log( data );
 
-          this.authData = data.userData!;   // Objeto con el payload (informacion del usuario) para filtrar (role) y mostrar datos (name, username) en los componentes (header)
+          // Valida si el usuario esta autenticado y tiene token
+          if( data.token ) {
+            this.authData = data.userData!;                 // Objeto con el payload (informacion del usuario) para filtrar (role) y mostrar datos (name, username) en los componentes (header)
+            localStorage.setItem( 'token', data.token! );   // Actualiza Token guardado en el localStorage
+          }
+          else {
+            localStorage.removeItem( 'token' );
+          }
+
         }),
         map( data => data.ok ),
         catchError( error => {
