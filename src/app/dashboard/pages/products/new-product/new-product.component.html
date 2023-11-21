@@ -14,8 +14,23 @@
       type="text"
       formControlName="name"
       placeholder="Ej: Mango"
+      minlength="3"
     />
   </div>
+  <!--Mensaje de Error-->
+  <div
+    *ngIf="productForm.get( 'name' )?.invalid && ( productForm.get( 'name' )?.dirty || productForm.get( 'name' )?.touched )"
+  >
+    <small 
+      *ngIf="productForm.get( 'name' )?.errors?.[ 'required' ]"
+      class="error-message"
+    >Nombre es requerido</small>
+    <small
+      *ngIf="productForm.get( 'name' )?.errors?.[ 'minlength' ]"
+      class="error-message"
+    >Minimo de 3 caracteres</small>
+  </div>
+  <!-- TODO: Colocar los mensajes de error de los campos del formulario -->
   <div class="field">
     <label for="quantity">Cantidad<span>*</span></label>
     <input
@@ -71,13 +86,18 @@
   <div class="field">
     <button
       class="btn btn-primary"
+      [disabled]="productForm.invalid"
       type="submit"
     >Crear</button>
   </div>
 
   <div class="errors">
     <h3 class="title-errors">Errors</h3>
-    <!-- <pre class="error">{{ loginForm.get( 'email' )?.errors | json }}</pre>
-    <pre class="error">{{ loginForm.get( 'password' )?.errors | json }}</pre> -->
+    <pre class="error">name: {{ productForm.get( 'name' )?.errors | json }}</pre>
+    <pre class="error">price: {{ productForm.get( 'price' )?.errors | json }}</pre>
+    <pre class="error">quantity: {{ productForm.get( 'quantity' )?.errors | json }}</pre>
+    <pre class="error">category: {{ productForm.get( 'category' )?.errors | json }}</pre>
+    <pre class="error">description: {{ productForm.get( 'description' )?.errors | json }}</pre>
+    <pre class="error">urlImage: {{ productForm.get( 'urlImage' )?.errors | json }}</pre>
   </div>
 </form>
