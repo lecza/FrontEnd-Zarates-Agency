@@ -1,0 +1,83 @@
+<form
+  class="form form-auth form-login"
+  [formGroup]="productForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+>
+  <h2>Crea producto</h2>
+
+  <div class="field">
+    <label for="name">Nombre del producto<span>*</span></label>
+    <input
+      id="name"
+      class="input-field"
+      type="text"
+      formControlName="name"
+      placeholder="Ej: Mango"
+    />
+  </div>
+  <div class="field">
+    <label for="quantity">Cantidad<span>*</span></label>
+    <input
+      id="quantity"
+      class="input-field"
+      type="number"
+      formControlName="quantity"
+      placeholder="Ej: 9"
+    />
+  </div>
+  <div class="field">
+    <label for="price">Precio</label>
+    <input
+      id="price"
+      class="input-field"
+      type="number"
+      formControlName="price"
+      placeholder="Ej: 19"
+    />
+  </div>
+  <div class="field">
+    <label for="category">Categoria</label>
+    <select 
+        class="input-field"
+        formControlName="category" 
+        id="category"
+    >
+        <option value="">Seleccione...</option>
+        <option
+            *ngFor="let category of categories"
+            [value]="category"
+        >{{ category }}</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="image">Url de la imagen del producto</label>
+    <input
+      id="image"
+      class="input-field"
+      type="text"
+      formControlName="urlImage"
+    />
+  </div>
+  <div class="field">
+    <label for="description">Descripcion del producto</label>
+    <textarea
+      id="description"
+      class="input-field"
+      formControlName="description"
+      placeholder="Ej: Producto delicado"
+    ></textarea>
+  </div>
+  <div class="field">
+    <button
+      class="btn btn-primary"
+      type="submit"
+    >Crear</button>
+  </div>
+
+  <div class="errors">
+    <h3 class="title-errors">Errors</h3>
+    <!-- <pre class="error">{{ loginForm.get( 'email' )?.errors | json }}</pre>
+    <pre class="error">{{ loginForm.get( 'password' )?.errors | json }}</pre> -->
+  </div>
+</form>
