@@ -44,4 +44,25 @@ export class ValidateFormsService {
 
     return null;
   }
+
+    // Función para validar una URL normal
+    validateNormalUrl( control: AbstractControl ): { [key: string]: any } | null {
+      const value = control.value;
+
+      console.log( 'Valor proporcionado:', value );       // Imprime el valor en la consola
+
+      // Verificar si el valor es un objeto de tipo File
+      if ( value instanceof File ) {
+        const imageType = value.type.split('/')[ 0 ];     // Obtener el tipo de imagen a partir del objeto File
+
+        console.log( imageType );
+
+        // Verificar si el tipo de archivo no es una imagen
+        if ( imageType !== 'image' ) {
+          return { invalidUrl: true };
+        }
+      }
+
+      return null;    // Devolver nulo si no se encuentran errores de validación
+    }
 }

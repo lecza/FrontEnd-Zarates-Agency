@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
 import { ValidateFormsService } from 'src/app/services/validate-forms.service';
@@ -10,35 +10,41 @@ import { ValidateFormsService } from 'src/app/services/validate-forms.service';
   styleUrls: ['./new-product.component.css']
 })
 export class NewProductComponent {
-  categories=[ 'Tecnologia', 'Hogar', 'Frutas' ];
+  categories = [
+    { name: 'Tecnologia', value: 'tecnologia' },
+    { name: 'Hogar', value: 'hogar' },
+    { name: 'Verduras', value: 'verduras' },
+    { name: 'Frutas', value: 'frutas' }
+  ];
   productForm: FormGroup = this.formBuilder.group({
     name: [ '', [ Validators.required, Validators.minLength( 3 ) ] ],
-    quantity: [ '', [ Validators.required, this.validateForms.validateQuantity ] ],
-    price: [ '', [ this.validateForms.validatePrice ] ],
-    description: [ '', [ this.validateForms.validateDescription ] ],
+    price: [ '', [ Validators.required, this.validateForm.validatePrice ] ],
+    quantity: [ '', [ Validators.required, this.validateForm.validateQuantity ] ],
+    urlImage: [ '', this.validateForm.validateNormalUrl ],
     category: [ '' ],
-    urlImage: [ '' ]
+    description: [ '', [ this.validateForm.validateDescription ] ]
   });
 
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
-    private validateForms: ValidateFormsService,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private validateForm: ValidateFormsService
   ) {}
 
-  onSubmit() {
+
+  createProduct() {
     console.log( this.productForm.value );
 
-    this.productService.createProduct( this.productForm.value ).subscribe( data => {
-      console.log( data );
-    });
+    this.productService.createProduct( this.productForm.value )
+      .subscribe( ( response ) => {
+        console.log( response );
+      });
 
     this.productForm.reset();
 
     setTimeout( () => {
-      this.router.navigateByUrl( '/dashboard/products' );
+      this.router.navigate( [ 'dashboard', 'products' ] );
     }, 1000 );
-
   }
 }

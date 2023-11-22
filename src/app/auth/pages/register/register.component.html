@@ -18,11 +18,11 @@
       minlength="3"
     />
     <!-- Despliega los mensajes de error del campo -->
-    <div 
-      *ngIf="registerForm.get( 'name' )?.invalid && registerForm.get( 'name' )?.dirty && registerForm.get( 'name' )?.touched" 
+    <div
+      *ngIf="registerForm.get( 'name' )?.invalid && registerForm.get( 'name' )?.dirty && registerForm.get( 'name' )?.touched"
       class="error-message"
     >
-      <small 
+      <small
         *ngIf="registerForm.get( 'name' )?.errors?.[ 'required' ]"
       >
         El nombre del usuario es requerido
@@ -45,8 +45,8 @@
       placeholder="Ingrese su Email"
     />
       <!-- Despliega los mensajes de error del campo -->
-      <div 
-        *ngIf="registerForm.get( 'username' )?.invalid && registerForm.get( 'username' )?.dirty && registerForm.get( 'username' )?.touched" 
+      <div
+        *ngIf="registerForm.get( 'username' )?.invalid && registerForm.get( 'username' )?.dirty && registerForm.get( 'username' )?.touched"
         class="error-message"
       >
         <small
@@ -72,8 +72,8 @@
       maxlength="12"
     />
       <!-- Despliega los mensajes de error del campo -->
-      <div 
-        *ngIf="registerForm.get( 'password' )?.invalid && registerForm.get( 'password' )?.dirty && registerForm.get( 'password' )?.touched" 
+      <div
+        *ngIf="registerForm.get( 'password' )?.invalid && registerForm.get( 'password' )?.dirty && registerForm.get( 'password' )?.touched"
         class="error-message"
       >
         <small
@@ -101,10 +101,10 @@
       {{ message }}
     </div>
   </div>
-  
+
   <div class="field">
     <button
-      class="btn btn-primary"
+      class="btn btn-primary button"
       type="submit"
       [disabled]="registerForm.invalid"
     >Registrarse</button>
