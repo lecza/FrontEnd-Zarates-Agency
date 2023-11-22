@@ -79,20 +79,15 @@
         <small
           *ngIf="registerForm.get( 'password' )?.errors?.[ 'required' ]"
         >
-          Contrasenia requerida
+          Contraseña requerida
         </small>
         <small
-          *ngIf="registerForm.get( 'password' )?.errors?.[ 'minLength' ]"
-        >
-          Debe tener minimo 6 caracteres
-        </small>
-        <small
-          *ngIf="registerForm.get( 'password' )?.errors?.[ 'maxLength' ]"
-        >
-          Debe tener maximo 12 caracteres
-        </small>
+        *ngIf="registerForm.get( 'password' )?.errors?.[ 'pattern' ]"
+      >
+        La contraseña debe tener al menos 8 caracteres y contener al menos 1 número, 1 mayúscula 1 carácter especial.
+      </small>
 
-      </div>
+    </div>
 
   </div>
   <!-- Imprime mensaje -->

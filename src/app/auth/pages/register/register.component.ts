@@ -15,33 +15,31 @@ export class RegisterComponent {
 
   // Paso 2 (Reactive Forms): Define estructura
   registerForm: FormGroup = this.formBuilder.group({
-    name: [ 
+    name: [
       '',   // Valor por defecto del campo
       [
         Validators.required,
         Validators.minLength( 3 ),
       ]    // Validaciones del campo
     ],
-    username: [ 
+    username: [
       '',
       [
         Validators.required,
         Validators.pattern( this.validateForm.email )
       ]
     ],
-    password: [ 
+    password: [
       '',
-      [ 
+      [
         Validators.required,
-        Validators.minLength( 6 ),
-        Validators.maxLength( 12 ),
         Validators.pattern( this.validateForm.pass )
       ]
     ]
   });
 
   // Paso 1 (Reactive Forms): Inyeccion de dependencias
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private validateForm: ValidateFormsService
@@ -56,7 +54,7 @@ export class RegisterComponent {
       console.log( '>>>', data );
 
 
-      // Valida si la peticion fue exitosa y despliega 
+      // Valida si la peticion fue exitosa y despliega
       if( data.ok )
         this.classMessage = 'message success';
       else

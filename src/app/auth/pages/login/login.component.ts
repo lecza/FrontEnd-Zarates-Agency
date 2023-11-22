@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ResponseAuth } from 'src/app/interfaces/response-auth';
 import { AuthService } from 'src/app/services/auth.service';
+import { ValidateFormsService } from 'src/app/services/validate-forms.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +13,14 @@ export class LoginComponent {
   classMessage!: String;
 
   loginForm: FormGroup = this.formBuilder.group({
-    username: [ '', [ Validators.required, Validators.email ] ],
-    password: [ '', [ Validators.required ] ]
+    username: [ '', [ Validators.required, Validators.pattern( this.validationFormsService.email ) ] ],
+    password: [ '', [ Validators.required, Validators.pattern( this.validationFormsService.pass ), Validators.minLength( 6 ) ] ]
   });
 
-  constructor( 
+  constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private validationFormsService: ValidateFormsService
   ) {}
 
   login() {
@@ -28,7 +29,7 @@ export class LoginComponent {
     this.authService.login( this.loginForm.value ).subscribe( ( data: boolean ) => {
       console.log( data );
 
-      // Valida si no se logra autenticar el usuario 
+      // Valida si no se logra autenticar el usuario
       if( ! data ) {
         this.classMessage = 'message error';
         this.message = 'Error de autenticacion';
@@ -39,7 +40,7 @@ export class LoginComponent {
         this.classMessage = '';
         this.message = '';
       }, 2000 );
-      
+
     });
 
   }
