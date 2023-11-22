@@ -1,17 +1,68 @@
-<h2>Product Component</h2>
-<!-- <code>
-    <pre>{{ products | json }}</pre>
-</code> -->
+<h2>Lista de productos</h2>
 
-<ul>
-    <li *ngFor="let product of products">
-        <div>
-            {{ product.name }} => {{ product.price | currency }} &nbsp;
-            <a href="#">edit</a> &nbsp;
-            <a href="#">delete</a>
-        </div>
-    </li>
-</ul>
+<ng-container *ngIf="products && products.length > 0; then productList; else noProducts">
+</ng-container>
+
+<ng-template #productList>
+  <h3>Productos registrados</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Preview</th>
+        <th scope="col">Name and Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unite price</th>
+        <th scope="col">Total price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td scope="row">
+          <img class="product__image" [src]="product.urlImage" [alt]="product.name">
+        </td>
+        <td>
+          <h3>{{ product.name }}</h3>
+          <p class="product__description">{{ product.description }}</p>
+        </td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.quantity }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.price! * product.quantity! | currency }}</td>
+        <td>
+          <button
+            class="btn btn-primary"
+            (click)="update( product._id )"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-primary"
+            (click)="remove( product._id )"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th scope="row">Totals</th>
+        <td></td>
+        <td></td>
+        <td>16</td>
+        <td>2050</td>
+        <td>16750</td>
+        <th scope="row">Actions</th>
+      </tr>
+    </tfoot>
+  </table>
 
 
+</ng-template>
 
+<ng-template #noProducts>
+  <h3>No has registrado productos</h3>
+</ng-template>
