@@ -6,6 +6,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { verifyAuthGuard } from '../guards/verify-auth.guard';
 import { NewProductComponent } from './pages/products/new-product/new-product.component';
+import { UpdateProductComponent } from './pages/products/update-product/update-product.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'products/new', component: NewProductComponent }
+      { path: 'products/new', component: NewProductComponent },
+      { path: 'products/update/:id', component: UpdateProductComponent }
     ],
     canActivate: [ verifyAuthGuard ]
   }

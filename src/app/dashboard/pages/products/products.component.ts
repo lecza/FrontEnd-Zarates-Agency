@@ -4,6 +4,7 @@ import { Product } from 'src/app/interfaces/product';
 import { HttpClient } from '@angular/common/http';
 import { ProductService } from 'src/app/services/product.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,8 @@ export class ProductsComponent implements OnInit {
   // Constructor: public, private, proteted
   constructor( 
     private http: HttpClient,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) {}
   
   ngOnInit(): void {
@@ -36,12 +38,10 @@ export class ProductsComponent implements OnInit {
 
   // Metodos
   update( id: string ) {
-    console.log( 'Actualiza ID: ', id );
+    this.router.navigateByUrl( `/dashboard/products/update/${ id }` );
   }
 
   remove( id: string ) {
-
-
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: "btn btn-success",
