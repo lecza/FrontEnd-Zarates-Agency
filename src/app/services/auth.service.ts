@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   BASE_URL: string = environment.baseUrl;
-  private authData!: User;
+  private authData!: User | {};
 
   constructor(
     private http: HttpClient,
@@ -82,6 +82,14 @@ export class AuthService {
            return of( false );
         })
       );
+  }
+
+  logout() {
+    // Eliminamos todos los valores establecidos en el localStorage
+    localStorage.clear();
+
+    // Elimina los valores del usuario
+    this.authData = {};
   }
 
 }
