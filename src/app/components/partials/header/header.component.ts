@@ -9,17 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
   constructor( 
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
 
   /** Getters */
   get user() {
     return this.authService.user;
-  }
-
-  logout() {
-    this.authService.logout();
-    this.router.navigateByUrl( '/' );
   }
 }
