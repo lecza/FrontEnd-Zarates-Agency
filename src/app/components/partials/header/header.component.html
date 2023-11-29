@@ -1,4 +1,66 @@
 <header>
+  <nav class="navbar-expand-lg text-white bg-dark">
+    <div class="container">
+      <div class="navbar-top-menu d-flex justify-content-between">
+        <ul class="navbar-nav d-flex justify-content-end align-middle m-2 gap-3 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="mailto:jim@rock.com">info@zaratesagencyweb.com</a><br />
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Bogota, Colombia</a><br />
+          </li>
+        </ul>
+        <ul class="navbar-nav d-flex justify-content-end align-middle m-2 gap-3 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/faqs">Faq's</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/images/zarates-header.png" alt="logo zarates agency">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#about-us">About us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#developers">Developers</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Information
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" routerLink="/our-services">Our Services</a></li>
+              <li><a class="dropdown-item" routerLink="/services">Services</a></li>
+              <li><a class="dropdown-item" routerLink="/projects">Projects</a></li>
+              <li><a class="dropdown-item" routerLink="/pricing">Pricing</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <!-- <li><a class="dropdown-item" routerLink="/">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- <header>
     <pre>{{ user | json }}</pre>
     <div class="container">
       <a routerLink="/" class="logo">Logo</a>
@@ -49,4 +111,4 @@
         </ul>
       </nav>
     </div>
-  </header>
+  </header> -->

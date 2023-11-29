@@ -1,5 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
-/* You can add global styles to this file, and also import other style files */
+/** FrontEnd: Oficial */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Courier Prime', monospace;
+}
+
+nav.navbar-expand-lg.text-white.bg-dark {
+  height: 3.4rem;
+}
+
+nav {
+    text-align: right;
+}
+
+h1 {
+  font-size: 3.2em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1em;
+  text-align: justify;
+}
+
+button {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 2em;
+  text-align: center;
+}
+
+h4 {
+  font-size: 2em;}
+p {
+  font-size: 1.2em;
+}
+a { 
+  font-size: none;
+}
+
+h5{ 
+  font-size: 2em;
+}
+
+address {
+  background-color: black;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+address a {
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+a.btn-primary {
+  background: #F0f0f0;
+  border: 1px solid gray;
+  padding: .3rem .6rem;
+  border-radius: .2rem;
+  color: black;
+  font-family: Arial;
+  font-size: 24px;
+}
+.banner-programando{
+  max-width: 100%;
+  width: 100%;
+}
+.cartas {
+  display: flex;
+  gap: 1.2rem;
+}
+.carta {
+  flex-basis: 16%;
+  margin: 0 auto;
+}
+.carta h4 {
+  font-size: 1.27rem;
+}
+
+img.image-zarate {
+  float: left;
+  margin-right: 1rem;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+footer{ 
+  font: 0.7em sans-serif;
+  text-align: center;
+}
+
+/** Formularios */
 .form-auth,
 .form-product {
   max-width: 50%;
