@@ -84,9 +84,10 @@ a.btn-primary {
   font-size: 1.27rem;
 }
 
-img.image-zarate {
+.image-zarate {
   float: left;
   margin-right: 1rem;
+  width: 45%;
 }
 
 .clearfix::after {
