@@ -2,7 +2,7 @@ export interface Project {
     name: string;
     urlImage: string;
     date: Date;
-    client: string;
+    customer: string;
     urlWebsite: string;
     location: string;
     description: string;

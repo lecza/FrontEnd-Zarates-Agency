@@ -27,4 +27,12 @@ export class ProjectService {
       { headers: this.headers } 
     );
   }
+
+  getAllProjects() {
+
+    return this.http.get<ResponseProjects>( 
+      `${ this.BASE_URL }/projects`,
+      { headers: this.headers }
+    );
+  }
 }
