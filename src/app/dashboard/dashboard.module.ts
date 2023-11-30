@@ -9,6 +9,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { NewProductComponent } from './pages/products/new-product/new-product.component';
 import { UpdateProductComponent } from './pages/products/update-product/update-product.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
+import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 
 
 @NgModule({
@@ -17,6 +19,9 @@ import { UpdateProductComponent } from './pages/products/update-product/update-p
     DashboardComponent,
     ProductsComponent,
     NewProductComponent,
+    UpdateProductComponent,
+    ProjectsComponent,
+    NewProjectComponent,
     UpdateProductComponent
   ],
   imports: [
