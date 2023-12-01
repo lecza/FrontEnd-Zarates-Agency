@@ -35,4 +35,12 @@ export class ProjectService {
       { headers: this.headers }
     );
   }
+
+  deleteProjectById( id: string ) {
+
+    return this.http.delete(
+      `${ this.BASE_URL }/projects/${ id }`,
+      { headers: this.headers }
+    );
+  }
 }
