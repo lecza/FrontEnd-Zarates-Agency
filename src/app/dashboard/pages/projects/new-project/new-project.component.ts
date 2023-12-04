@@ -36,10 +36,10 @@ export class NewProjectComponent {
       console.log( response );
     });
 
-  this.projectForm.reset();
+    this.projectForm.reset();
 
-  setTimeout( () => {
-    this.router.navigate( [ 'dashboard', 'projects' ] );
-  }, 1000 );
+    setTimeout( () => {
+      this.router.navigate( [ 'dashboard', 'projects' ] );
+    }, 1000 );
   }
 }

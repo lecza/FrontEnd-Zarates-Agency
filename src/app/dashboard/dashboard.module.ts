@@ -11,6 +11,7 @@ import { NewProductComponent } from './pages/products/new-product/new-product.co
 import { UpdateProductComponent } from './pages/products/update-product/update-product.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
+import { UpdateProjectComponent } from './pages/projects/update-project/update-project.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { NewProjectComponent } from './pages/projects/new-project/new-project.co
     UpdateProductComponent,
     ProjectsComponent,
     NewProjectComponent,
-    UpdateProductComponent
+    UpdateProjectComponent
   ],
   imports: [
     CommonModule,

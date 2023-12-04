@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectService } from 'src/app/services/project.service';
 import Swal from 'sweetalert2';
@@ -10,8 +11,12 @@ import Swal from 'sweetalert2';
 })
 export class ProjectsComponent {
   projects!: Project[];
+  projectId!: string;
 
-  constructor( private projectService: ProjectService ) {}
+  constructor( 
+    private projectService: ProjectService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.loadData();
@@ -66,5 +71,10 @@ export class ProjectsComponent {
       }
     });
 
+  }
+
+  update( id: string ) {
+    
+    this.router.navigateByUrl( `/dashboard/projects/update/${ id }` );
   }
 }

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { ResponseProjects } from '../interfaces/response-projects';
 import { Project } from '../interfaces/project';
+import { map, tap } from 'rxjs';
+import { ResponseProject } from '../interfaces/response-project';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class ProjectService {
     const token = localStorage.getItem( 'token' );
     this.token = token ? token : '';
     this.headers = new HttpHeaders().set( 'X-Token', this.token );
+    console.log( token );
   }
 
   createProject( data: Project ) {
@@ -36,6 +39,21 @@ export class ProjectService {
     );
   }
 
+  getProductById( id: string ) {
+
+    return this.http.get<ResponseProject>( 
+      `${ this.BASE_URL }/projects/${ id }`,
+      { headers: this.headers }
+    ).pipe(
+        tap( data => {
+          console.log( data );
+
+          return data;
+        }),
+        map( product => product.data )
+      );
+  }
+
   deleteProjectById( id: string ) {
 
     return this.http.delete(
@@ -43,4 +61,16 @@ export class ProjectService {
       { headers: this.headers }
     );
   }
+
+  updateProjectById( id: string, project: Project ) {
+
+    console.log( id, project );
+
+    return this.http.patch(
+      `${ this.BASE_URL }/projects/${ id }`,
+      project,
+      { headers: this.headers }
+    );
+  }
+
 }

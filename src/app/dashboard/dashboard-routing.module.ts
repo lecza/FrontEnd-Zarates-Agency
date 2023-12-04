@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: 'products/update/:id', component: UpdateProductComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/new', component: NewProjectComponent },
-      { path: 'projects/update', component: UpdateProjectComponent }
+      { path: 'projects/update/:id', component: UpdateProjectComponent }
     ],
     canActivate: [ verifyAuthGuard ]
   }

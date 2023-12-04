@@ -1,1 +1,173 @@
-<h2>Actualizar proyecto</h2>
+<form
+  class="form form-product"
+  [formGroup]="projectForm"
+  (ngSubmit)="updateProject()"
+  autocomplete="off"
+>
+  <h2>Proyects</h2>
+  <p>Registra nuevos proyectos. Diligencia cada uno de los campos según sean requeridos.</p>
+  <div class="field">
+    <label for="name">Name*</label>
+    <input
+      id="name"
+      class="input-field"
+      type="text"
+      formControlName="name"
+      placeholder="Project name"
+      minlength="3"
+    />
+    <div
+      *ngIf="projectForm.get( 'name' )?.invalid && ( projectForm.get( 'name' )?.dirty || projectForm.get( 'name' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'name' )?.errors?.[ 'required' ]">
+        Nombre de producto es requerido.
+      </small>
+      <small *ngIf="projectForm.get( 'name' )?.errors?.[ 'minlength' ]">
+        Nombre de producto debe tener al menos 3 caracteres.
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="customer">Customer*</label>
+    <input
+      id="customer"
+      class="input-field"
+      type="text"
+      formControlName="customer"
+      placeholder="Ej: Juan"
+      minlength="3"
+    />
+    <div
+      *ngIf="projectForm.get( 'customer' )?.invalid && ( projectForm.get( 'customer' )?.dirty || projectForm.get( 'customer' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'customer' )?.errors?.[ 'required' ]">
+        Nombre de producto es requerido.
+      </small>
+      <small *ngIf="projectForm.get( 'customer' )?.errors?.[ 'minlength' ]">
+        Nombre de producto debe tener al menos 3 caracteres.
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="price">Price</label>
+    <input
+      id="price"
+      class="input-field"
+      type="number"
+      formControlName="price"
+      placeholder="Precio del Producto"
+    />
+    <div
+      *ngIf="projectForm.get( 'price' )?.invalid && ( projectForm.get( 'price' )?.dirty || projectForm.get( 'price' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'price' )?.errors?.[ 'required' ]">
+        Precio del producto es requerido.
+      </small>
+      <small *ngIf="projectForm.get( 'price' )?.errors?.[ 'negativeValue' ]">
+        El precio debe ser mayor o igual a cero
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="urlWebsite">URL website</label>
+    <input
+      id="urlWebsite"
+      class="input-field"
+      type="text"
+      formControlName="urlWebsite"
+      placeholder="Project urlWebsite"
+      minlength="3"
+    />
+    <div
+      *ngIf="projectForm.get( 'urlWebsite' )?.invalid && ( projectForm.get( 'urlWebsite' )?.dirty || projectForm.get( 'urlWebsite' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'urlWebsite' )?.errors?.[ 'required' ]">
+        Nombre de producto es requerido.
+      </small>
+      <small *ngIf="projectForm.get( 'urlWebsite' )?.errors?.[ 'minlength' ]">
+        Nombre de producto debe tener al menos 3 caracteres.
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="location">Location</label>
+    <input
+      id="location"
+      class="input-field"
+      type="text"
+      formControlName="location"
+      placeholder="Project location"
+      minlength="3"
+    />
+    <div
+      *ngIf="projectForm.get( 'location' )?.invalid && ( projectForm.get( 'location' )?.dirty || projectForm.get( 'location' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'location' )?.errors?.[ 'required' ]">
+        Nombre de producto es requerido.
+      </small>
+      <small *ngIf="projectForm.get( 'location' )?.errors?.[ 'minlength' ]">
+        Nombre de producto debe tener al menos 3 caracteres.
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="image">Imagen del producto*</label>
+    <input
+      id="image"
+      class="input-field"
+      type="text"
+      formControlName="urlImage"
+    />
+    <div
+      *ngIf="projectForm.get( 'urlImage' )?.invalid && ( projectForm.get( 'urlImage' )?.dirty || projectForm.get( 'urlImage' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'urlImage' )?.errors?.[ 'invalidUrl' ]">
+        La URL no tiene formato de imagen permitido
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="description">Descripción</label>
+    <textarea
+      id="description"
+      class="input-field"
+      formControlName="description"
+      placeholder="Descripción del Producto"
+      cols="20"
+      rows="5"
+      minlength="3"
+      maxlength="140"
+    ></textarea>
+    <div
+      *ngIf="projectForm.get( 'description' )?.invalid && ( projectForm.get( 'description' )?.dirty || projectForm.get( 'description' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="projectForm.get( 'description' )?.errors?.[ 'invalidDescriptionLength' ]">
+        La descripción debe tener una longitud de entre 3 a 140 caracteres
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <button
+      class="btn btn-primary button"
+      type="submit"
+      [disabled]="this.projectForm.invalid"
+    >Actualizar Producto</button>
+  </div>
+
+  <div class="errors">
+    <h3 class="title-errors">Errors</h3>
+    <pre class="error">name {{ projectForm.get( 'name' )?.errors | json }}</pre>
+    <pre class="error">price {{ projectForm.get( 'price' )?.errors | json }}</pre>
+    <pre class="error">quantity {{ projectForm.get( 'quantity' )?.errors | json }}</pre>
+    <pre class="error">urlImage {{ projectForm.get( 'urlImage' )?.errors | json }}</pre>
+    <pre class="error">category {{ projectForm.get( 'category' )?.errors | json }}</pre>
+    <pre class="error">description {{ projectForm.get( 'description' )?.errors | json }}</pre>
+  </div>
+</form>
