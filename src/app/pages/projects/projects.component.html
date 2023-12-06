@@ -1,3 +1,14 @@
 <div class="container">
-    <p>projects works!</p>
+    <div class="cards">
+        <div class="card"
+            *ngFor="let project of projects"
+        >
+            <img src="{{ project.urlImage }}" class="card-img-top" [alt]="project.name">
+            <div class="card-body">
+                <h4 class="card-title">{{ project.name }}</h4>
+                <p class="card-text">{{ project.description }}</p>
+                <a (click)="goProjectDetail( project._id )" class="btn btn-dark">See details</a>
+            </div>
+        </div>
+    </div>
 </div>

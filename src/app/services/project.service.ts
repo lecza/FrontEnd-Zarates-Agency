@@ -39,6 +39,13 @@ export class ProjectService {
     );
   }
 
+  getProjects() {
+
+    return this.http.get<ResponseProjects>( 
+      `${ this.BASE_URL }/projects/all`
+    );
+  }
+
   getProductById( id: string ) {
 
     return this.http.get<ResponseProject>( 
