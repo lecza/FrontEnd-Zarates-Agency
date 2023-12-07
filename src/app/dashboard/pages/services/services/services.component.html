@@ -1,10 +1,39 @@
 <h2>Service list</h2>
+<!-- <pre>{{ services | json }}</pre> -->
 
 <ng-container *ngIf="services && services.length > 0; then productList; else noProducts">
 </ng-container>
 
 <ng-template #productList>
-  <h3>Registered services</h3>
+  <div class="table-responsive">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let service of services; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ service.name }}</td>
+                <td>{{ service.description }}</td>
+                <td>
+                    <a 
+                        class="btn btn-light"
+                    ><i class="bi bi-pencil"></i></a>
+                    <a 
+                        class="btn btn-dark"
+                    ><i class="bi bi-trash"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
 </ng-template>
 
 <ng-template #noProducts>

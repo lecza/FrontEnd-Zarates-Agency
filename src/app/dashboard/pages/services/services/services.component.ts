@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Service } from 'src/app/interfaces/service';
-import { ValidateFormsService } from 'src/app/services/validate-forms.service';
+import { ServiceService } from 'src/app/services/service.service';
 
 @Component({
   selector: 'app-services',
@@ -12,27 +11,19 @@ import { ValidateFormsService } from 'src/app/services/validate-forms.service';
 export class ServicesComponent {
   services!: Service[];
 
-  serviceForm: FormGroup = this.formBuilder.group({
-    name: [ '', [ Validators.required, Validators.minLength( 3 ) ] ],
-    price: [ '', [ Validators.required, this.validateForm.validatePrice ] ],
-    description: [ '', [ this.validateForm.validateDescription ] ]
-  });
-
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private validateForm: ValidateFormsService
+    private serviceService: ServiceService,
+    private router: Router
   ) {}
 
-  onSubmit() {
-    console.log( this.serviceForm.value );
+  ngOnInit() {
+    this.loadData();
+  }
 
-    // TODO: Invocar el servicio
-
-    this.serviceForm.reset();
-
-    setTimeout( () => {
-      this.router.navigate( [ 'dashboard', 'services' ] );
-    }, 1000 );
+  loadData() {
+    this.serviceService.getAllServices().subscribe( data => {
+      console.log( data );
+      this.services = data.data;
+    });
   }
 }
