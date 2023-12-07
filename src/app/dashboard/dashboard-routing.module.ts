@@ -10,6 +10,9 @@ import { UpdateProductComponent } from './pages/products/update-product/update-p
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 import { UpdateProjectComponent } from './pages/projects/update-project/update-project.component';
+import { ServicesComponent } from './pages/services/services/services.component';
+import { NewServiceComponent } from './pages/services/services/new-service/new-service.component';
+import { UpdateServiceComponent } from './pages/services/services/update-service/update-service.component';
 
 const routes: Routes = [
   {
@@ -22,7 +25,10 @@ const routes: Routes = [
       { path: 'products/update/:id', component: UpdateProductComponent },
       { path: 'projects', component: ProjectsComponent },
       { path: 'projects/new', component: NewProjectComponent },
-      { path: 'projects/update/:id', component: UpdateProjectComponent }
+      { path: 'projects/update/:id', component: UpdateProjectComponent },
+      { path: 'services', component: ServicesComponent },
+      { path: 'services/new', component: NewServiceComponent },
+      { path: 'services/update', component: UpdateServiceComponent }
     ],
     canActivate: [ verifyAuthGuard ]
   }

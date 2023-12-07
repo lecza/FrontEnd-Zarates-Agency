@@ -12,6 +12,9 @@ import { UpdateProductComponent } from './pages/products/update-product/update-p
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { NewProjectComponent } from './pages/projects/new-project/new-project.component';
 import { UpdateProjectComponent } from './pages/projects/update-project/update-project.component';
+import { ServicesComponent } from './pages/services/services/services.component';
+import { NewServiceComponent } from './pages/services/services/new-service/new-service.component';
+import { UpdateServiceComponent } from './pages/services/services/update-service/update-service.component';
 
 
 @NgModule({
@@ -23,7 +26,10 @@ import { UpdateProjectComponent } from './pages/projects/update-project/update-p
     UpdateProductComponent,
     ProjectsComponent,
     NewProjectComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
+    ServicesComponent,
+    NewServiceComponent,
+    UpdateServiceComponent
   ],
   imports: [
     CommonModule,
