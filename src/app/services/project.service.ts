@@ -46,9 +46,23 @@ export class ProjectService {
     );
   }
 
+  getProduct( id: string ) {
+
+    return this.http.get<ResponseProject>(   
+      `${ this.BASE_URL }/projects/one/${ id }`
+    ).pipe(
+        tap( data => {
+          console.log( data );
+
+          return data;
+        }),
+        map( product => product.data )
+      );
+  }
+
   getProductById( id: string ) {
 
-    return this.http.get<ResponseProject>( 
+    return this.http.get<ResponseProject>(   
       `${ this.BASE_URL }/projects/${ id }`,
       { headers: this.headers }
     ).pipe(
