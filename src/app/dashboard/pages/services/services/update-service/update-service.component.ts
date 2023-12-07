@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs';
 import { Service } from 'src/app/interfaces/service';
 import { ServiceService } from 'src/app/services/service.service';
 import { ValidateFormsService } from 'src/app/services/validate-forms.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-service',
@@ -12,6 +13,8 @@ import { ValidateFormsService } from 'src/app/services/validate-forms.service';
   styleUrls: ['./update-service.component.css']
 })
 export class UpdateServiceComponent {
+  serviceId!: string;
+
   serviceForm: FormGroup = this.formBuilder.group({
     name: [ '', [ Validators.required, Validators.minLength( 3 ) ] ],
     price: [ '', [ Validators.required, this.validateForm.validatePrice ] ],
@@ -38,6 +41,8 @@ export class UpdateServiceComponent {
       ).subscribe( id  => {
         console.log( id );      /// Extraemos de la URL
 
+        this.serviceId = id;
+
         this.serviceServices.getServiceById( id ).subscribe( ( data: Service ) => {
           console.log( data );
 
@@ -56,12 +61,25 @@ export class UpdateServiceComponent {
   onSubmit() {
     console.log( this.serviceForm.value );
 
-    // TODO: Invocar el servicio
+    this.serviceServices.updateServiceById( this.serviceId, this.serviceForm.value )
+      .subscribe( data => {
+        console.log( 'data', data );
+
+        this.serviceForm.reset();
+      });
 
     this.serviceForm.reset();
 
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Servicio actualizado",
+      showConfirmButton: false,
+      timer: 1500
+    });
+
     setTimeout( () => {
-      this.router.navigate( [ 'dashboard', 'projects' ] );
+      this.router.navigate( [ 'dashboard', 'services' ] );
     }, 1000 );
   }
 }
