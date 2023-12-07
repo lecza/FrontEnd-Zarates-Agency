@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'projects/update/:id', component: UpdateProjectComponent },
       { path: 'services', component: ServicesComponent },
       { path: 'services/new', component: NewServiceComponent },
-      { path: 'services/update', component: UpdateServiceComponent }
+      { path: 'services/update/:id', component: UpdateServiceComponent }
     ],
     canActivate: [ verifyAuthGuard ]
   }
