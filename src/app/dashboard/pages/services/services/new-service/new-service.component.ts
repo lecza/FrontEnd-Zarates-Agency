@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
+import { ServiceService } from 'src/app/services/service.service';
 import { ValidateFormsService } from 'src/app/services/validate-forms.service';
 
 @Component({
@@ -19,13 +20,17 @@ export class NewServiceComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private validateForm: ValidateFormsService
+    private validateForm: ValidateFormsService,
+    private serviceService: ServiceService
   ) {}
 
   onSubmit() {
     console.log( this.serviceForm.value );
 
-    // TODO: Invocar el servicio
+    this.serviceService.createService( this.serviceForm.value )
+      .subscribe( response => {
+        console.log( response );
+      })
 
     this.serviceForm.reset();
 
