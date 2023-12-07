@@ -1,1 +1,12 @@
-<p>services works!</p>
+<h2>Service list</h2>
+
+<ng-container *ngIf="services && services.length > 0; then productList; else noProducts">
+</ng-container>
+
+<ng-template #productList>
+  <h3>Registered services</h3>
+</ng-template>
+
+<ng-template #noProducts>
+  <h3>You have not registered services</h3>
+</ng-template>

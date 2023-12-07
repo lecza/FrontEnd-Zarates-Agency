@@ -1,1 +1,92 @@
-<p>update-service works!</p>
+<form
+  class="form form-product"
+  [formGroup]="serviceForm"
+  (ngSubmit)="onSubmit()"
+  autocomplete="off"
+>
+  <h2>Update service</h2>
+  <div class="field">
+    <p>Actualiza nuevos servicios. Diligencia cada uno de los campos según sean requeridos.</p>
+  </div>
+  <div class="field">
+    <label for="name">Name*</label>
+    <input
+      id="name"
+      class="input-field"
+      type="text"
+      formControlName="name"
+      placeholder="Service name"
+      minlength="3"
+    />
+    <div
+      *ngIf="serviceForm.get( 'name' )?.invalid && ( serviceForm.get( 'name' )?.dirty || serviceForm.get( 'name' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="serviceForm.get( 'name' )?.errors?.[ 'required' ]">
+        Nombre de producto es requerido.
+      </small>
+      <small *ngIf="serviceForm.get( 'name' )?.errors?.[ 'minlength' ]">
+        Nombre de producto debe tener al menos 3 caracteres.
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="price">Price</label>
+    <input
+      id="price"
+      class="input-field"
+      type="number"
+      formControlName="price"
+      placeholder="Price service"
+    />
+    <div
+      *ngIf="serviceForm.get( 'price' )?.invalid && ( serviceForm.get( 'price' )?.dirty || serviceForm.get( 'price' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="serviceForm.get( 'price' )?.errors?.[ 'required' ]">
+        Precio del producto es requerido.
+      </small>
+      <small *ngIf="serviceForm.get( 'price' )?.errors?.[ 'negativeValue' ]">
+        El precio debe ser mayor o igual a cero
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <label for="description">Descripción</label>
+    <textarea
+      id="description"
+      class="input-field"
+      formControlName="description"
+      placeholder="Service description"
+      cols="20"
+      rows="5"
+      minlength="3"
+      maxlength="140"
+    ></textarea>
+    <div
+      *ngIf="serviceForm.get( 'description' )?.invalid && ( serviceForm.get( 'description' )?.dirty || serviceForm.get( 'description' )?.touched )"
+      class="error-message"
+    >
+      <small *ngIf="serviceForm.get( 'description' )?.errors?.[ 'invalidDescriptionLength' ]">
+        La descripción debe tener una longitud de entre 3 a 140 caracteres
+      </small>
+    </div>
+  </div>
+  <div class="field">
+    <button
+      class="btn btn-primary button"
+      type="submit"
+      [disabled]="this.serviceForm.invalid"
+    >Update service</button>
+  </div>
+
+  <div class="errors">
+    <h3 class="title-errors">Errors</h3>
+    <pre class="error">name {{ serviceForm.get( 'name' )?.errors | json }}</pre>
+    <pre class="error">price {{ serviceForm.get( 'price' )?.errors | json }}</pre>
+    <pre class="error">quantity {{ serviceForm.get( 'quantity' )?.errors | json }}</pre>
+    <pre class="error">urlImage {{ serviceForm.get( 'urlImage' )?.errors | json }}</pre>
+    <pre class="error">category {{ serviceForm.get( 'category' )?.errors | json }}</pre>
+    <pre class="error">description {{ serviceForm.get( 'description' )?.errors | json }}</pre>
+  </div>
+</form>
