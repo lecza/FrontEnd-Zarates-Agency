@@ -3,6 +3,7 @@ export interface Service {
     price: number;
     description: string;
     userId: string;
+    category: string;
     createdAt: string;
     updatedAt: string;
     __v: number;
