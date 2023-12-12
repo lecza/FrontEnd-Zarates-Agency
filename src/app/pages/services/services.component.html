@@ -1,1 +1,19 @@
-<p>services works!</p>
+<div class="container">
+    <h2>Services</h2>
+    <!-- <pre>{{ services | json }}</pre> -->
+    <div class="cards">
+        <div class="card text-center" *ngFor="let service of services">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ service.name }}</h5>
+                <p class="card-text">{{ service.description }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-body-secondary">
+                2 days ago
+            </div>
+          </div>
+    </div>
+</div>

@@ -39,6 +39,13 @@ export class ServiceService {
     );
   }
 
+  getServices() {
+
+    return this.http.get<ResponseServices>( 
+      `${ this.BASE_URL }/services/all`
+    );
+  }
+
   getServiceById( id: string ) {
 
     return this.http.get<ResponseService>(   
