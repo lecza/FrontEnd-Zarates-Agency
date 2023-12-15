@@ -1,3 +1,55 @@
 .carousel-inner {
     height: 400px;
 }
+
+h1 {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 1.7rem;
+}
+
+h1 b {
+    margin-left: 1rem;
+}
+
+h3#desarrolladores {
+    margin: 3rem;
+    font-size: 2.5rem;
+}
+
+.carta h4 {
+    font-size: 2.2rem;
+}
+
+.image-zarate {
+    float: left;
+    margin-right: 1rem;
+    width: 31rem;
+    height: 25rem;
+    object-fit: cover;
+}
+
+img.image-zarate.image-hernan {
+    float: right;
+    margin-left: 1rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.carta {
+    flex-basis: 16%;
+    margin: 0 auto;
+    padding-bottom: 3rem;
+}
+
+a.btn.btn-dark.clear {
+    display: flex;
+    width: 200px;
+    margin: 2rem auto;
+    font-size: 1.4rem;
+    justify-content: center;
+}

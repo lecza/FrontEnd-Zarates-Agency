@@ -102,15 +102,13 @@ footer{
 }
 
 /** Formularios */
-.form-auth,
-.form-product {
+.form-auth, .form-product {
   max-width: 50%;
-  border: 1px dotted;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 
 .form-auth .field,
@@ -142,6 +140,7 @@ footer{
   width: 90%;
   background-color: antiquewhite;
   padding: 0 1rem;
+  display: none;
 }
 
 .form .title-errors {
@@ -154,10 +153,13 @@ footer{
   font-size: 1.1rem;
 }
 
-button.button {
+button.button.btn-primary {
   width: 40%;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 0.4rem;
+  background-color: black;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
 .message {
