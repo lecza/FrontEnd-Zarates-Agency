@@ -1,39 +1,49 @@
 <h2>Project list</h2>
 <!-- <pre>{{ projects | json }}</pre> -->
-<div class="table-responsive">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Customer</th>
-                <th scope="col">Date</th>
-                <th scope="col">Website</th>
-                <th scope="col">&nbsp;</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let project of projects; index as i">
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{ project.name }}</td>
-                <td>{{ project.customer }}</td>
-                <td>{{ project.date }}</td>
-                <td>
-                    <a [href]="project.urlWebsite">{{ project.urlWebsite }}</a>
-                </td>
-                <td>
-                    <a 
-                        class="btn btn-light"
-                        (click)="update( project._id )"
-                    ><i class="bi bi-pencil"></i></a>
-                    <a 
-                        class="btn btn-dark"
-                        (click)="remove( project._id )"
-                    ><i class="bi bi-trash"></i></a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<ng-container *ngIf="projects && projects.length > 0; then projectList; else noProjects">
+</ng-container>
 
-</div>
+<ng-template #projectList>
+    <div class="table-responsive">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Website</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects; index as i">
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.customer }}</td>
+                    <td>{{ project.date }}</td>
+                    <td>
+                        <a [href]="project.urlWebsite">{{ project.urlWebsite }}</a>
+                    </td>
+                    <td>
+                        <a 
+                            class="btn btn-light"
+                            (click)="update( project._id )"
+                        ><i class="bi bi-pencil"></i></a>
+                        <a 
+                            class="btn btn-dark"
+                            (click)="remove( project._id )"
+                        ><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</ng-template>
+
+<ng-template #noProjects>
+    <h3>You have not registered projects</h3>
+</ng-template>
